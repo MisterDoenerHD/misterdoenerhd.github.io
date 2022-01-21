@@ -18,6 +18,8 @@ function buttonclick(seite){
         case "roof":
             window.location.href = "rooftop-snipers.html";
             break;
+        case "soccer":
+            window.location.href = "football-random.html"
     }
     
 }
