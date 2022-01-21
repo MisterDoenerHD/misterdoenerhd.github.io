@@ -1,3 +1,3 @@
 function buttonclick(){
-    window.location.href="basket-random.html";
+    window.location.href = "basket-random.html";
 }
