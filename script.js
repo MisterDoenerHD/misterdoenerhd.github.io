@@ -15,8 +15,8 @@ function buttonclick(seite){
         case "volley":
             window.location.href = "volley-random.html";
             break;
-        case "roof":
-            window.location.href = "rooftop-snipers.html";
+        case "pixel":
+            window.location.href = "pixel-battles.html";
             break;
         case "soccer":
             window.location.href = "football-random.html"
