@@ -1,3 +1,11 @@
 body{
     background-image: url("C19A3FCB-6E3A-44AB-A903-C606AEF1D652.png");
 }
+
+h1{
+    text-decoration-color: azure;
+}
+
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
