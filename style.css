@@ -1,12 +1,12 @@
+:root{
+font-family: 'Josefin Sans', sans-serif;
+}
 body{
     background-image: url("background.png");
 }
 
 h1{
     color: azure;
-}
-
-h1{
     font-family:'Times New Roman', Times, serif;
 }
 header{
