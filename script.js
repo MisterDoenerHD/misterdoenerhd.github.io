@@ -20,6 +20,8 @@ function buttonclick(seite){
             break;
         case "soccer":
             window.location.href = "football-random.html"
+        case "impressum":
+            window.location.href= "impressum.html"
     }
     
 }
