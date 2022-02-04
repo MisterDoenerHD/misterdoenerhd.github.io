@@ -2,14 +2,14 @@
 font-family: 'Josefin Sans', sans-serif;
 }
 
-body{
+body {
     background-image: url("background.png");
 }
 
-h1{
+h1 {
     color: azure;
 }
 
-header{
+h2 {
     color: azure;
 }
