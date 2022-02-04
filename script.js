@@ -19,9 +19,11 @@ function buttonclick(seite){
             window.location.href = "pixel-battles.html";
             break;
         case "soccer":
-            window.location.href = "football-random.html"
+            window.location.href = "football-random.html";
+            break;
         case "impressum":
-            window.location.href= "impressum.html"
+            window.location.href = "impressum.html";
+            break;
     }
     
 }
