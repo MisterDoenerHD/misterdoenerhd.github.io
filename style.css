@@ -22,4 +22,12 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
   }
+button:hover {
+    background-color: azure;
+    border: 2px solid;
+    color: black;
+    border-radius: 8px;
+}
