@@ -14,9 +14,9 @@ h2 {
     color: azure;
 }
 button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
+    background-color: white;
+    border: black;
+    color: orange;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
