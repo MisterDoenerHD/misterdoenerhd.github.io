@@ -24,6 +24,9 @@ function buttonclick(seite){
         case "impressum":
             window.location.href = "impressum.html";
             break;
+        case "archer":
+            window.location.href = "archer.html";
+            break;
     }
     
 }
