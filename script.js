@@ -27,8 +27,8 @@ function buttonclick(seite){
         case "archer":
             window.location.href = "archers-battles.html";
             break;
-        case "snow":
-            window.location.href = "snow-rider.html";
+        case "slope":
+            window.location.href = "slope.html";
             break;
     }
     
