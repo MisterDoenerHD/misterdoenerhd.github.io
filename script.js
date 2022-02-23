@@ -33,6 +33,9 @@ function buttonclick(seite){
         case "swing":
             window.location.href = "stick-swing.html";
             break;
+        case "mc":
+            window.location.href = "minecraft.html";
+            break;
     }
     
 }
