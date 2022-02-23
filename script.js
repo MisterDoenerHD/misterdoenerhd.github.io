@@ -36,6 +36,9 @@ function buttonclick(seite){
         case "mc":
             window.location.href = "minecraft.html";
             break;
+        case "color":
+            window.location.href = "color.html";
+            break;
     }
     
 }
