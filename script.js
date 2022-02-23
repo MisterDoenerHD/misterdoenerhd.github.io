@@ -30,6 +30,9 @@ function buttonclick(seite){
         case "slope":
             window.location.href = "slope.html";
             break;
+        case "swing":
+            window.location.href = "stick-swing.html";
+            break;
     }
     
 }
