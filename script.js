@@ -39,6 +39,9 @@ function buttonclick(seite){
         case "color":
             window.location.href = "color.html";
             break;
+        case "quiz":
+            window.location.href = "quiz.html";
+            break;
     }
     
 }
