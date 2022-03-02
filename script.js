@@ -42,6 +42,9 @@ function buttonclick(seite){
         case "quiz":
             window.location.href = "quiz.html";
             break;
+        case "mine":
+            window.location.href = "https://minesweeper-online.de/index.html/";
+            break;
     }
     
 }
