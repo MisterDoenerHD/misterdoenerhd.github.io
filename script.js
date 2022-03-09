@@ -25,7 +25,7 @@ function buttonclick(seite){
             window.location.href = "impressum.html";
             break;
         case "archer":
-            window.location.href = "archers-battles.html";
+            window.location.href = "battles.html";
             break;
         case "slope":
             window.location.href = "slope.html";
