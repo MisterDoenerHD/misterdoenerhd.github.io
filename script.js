@@ -45,6 +45,9 @@ function buttonclick(seite){
         case "mine":
             window.location.href = "https://minesweeper-online.de";
             break;
+        case "twitch":
+            window.location.href = "https://twitch.tv/misterdoenerhd";
+            break;
     }
     
 }
