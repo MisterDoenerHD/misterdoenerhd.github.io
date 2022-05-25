@@ -51,6 +51,9 @@ function buttonclick(seite){
         case "twitch":
             window.location.href = "https://twitch.tv/misterdoenerhd";
             break;
+        case "venge":
+            window.location.href = "venge.html";
+            break;
     }
     
 }
