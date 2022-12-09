@@ -1,54 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Tetris</title>
+    <title>Tetris</title>
+    <style>
+        body {
+            background-color: #00bfff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+        }
+
+        #tetris_container {
+            width: 300px;
+            height: 600px;
+            position: relative;
+            border: 5px solid #b3b3b3;
+            background-color: #f2f2f2;
+            margin-bottom: 30px;
+        }
+
+        .block {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            background-color: #000000;
+            border: 1px solid #b3b3b3;
+            box-sizing: border-box;
+        }
+    </style>
 </head>
 <body>
+    <div id="tetris_container"></div>
+    <script>
+        // Variablen
+        const blockSize = 30;
+        const gameWidth = 10;
+        const gameHeight = 20;
+        const gameContainer = document.querySelector('#tetris_container');
 
-<h1>Tetris</h1>
+        // Erstelle ein Array, das die Position jedes Blocks angibt
+        let blockPositionArray = [
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        ];
 
-<canvas id="canvas" width="200" height="400"></canvas>
+        // Erstelle die Tetris-Blöcke
+        function createBlock(x, y) {
+            let block = document.createElement('div');
+            block.classList.add('block');
+            block.style.top = (x * blockSize) + 'px';
+            block.style.left = (y * blockSize) + 'px';
+            gameContainer.appendChild(block);
+        }
 
-<script>
-// Erstelle das Canvas-Element
-var canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
+        // Entferne den Tetris-Block
+        function removeBlock(x, y) {
+            let block = document.querySelector(".block[style='top: " + (x * blockSize) + "px; left: " + (y * blockSize) + "px;']");
+            gameContainer.removeChild(block);
+        }
 
-// Größe der einzelnen Tetris-Blöcke
-var blockSize = 20;
+        // Aktualisiere das Spielfeld
+        function updateGame() {
+            for (let i = 0; i < gameHeight; i++) {
+                for (let j = 0; j < gameWidth; j++) {
+                    let value = blockPositionArray[i][j];
+                    if (value === 0) {
+                        removeBlock(i, j);
+                    } else {
+                        createBlock(i, j);
+                    }
+                }
+            }
+        }
 
-// Liste der Tetris-Blöcke
-var blocks = [
-  [Z, "red"],
-  [S, "green"],
-  [T, "yellow"],
-  [O, "blue"],
-  [L, "purple"],
-  [I, "cyan"],
-  [J, "orange"]
-];
-
-// Zufälliges Tetris-Block auswählen
-var currentBlock = blocks[Math.floor(Math.random() * blocks.length)];
-
-// Tetris-Block zeichnen
-function draw() {
-  // Code zum Zeichnen des Tetris-Blocks hier
-}
-
-// Tetris-Block bewegen
-function move() {
-  // Code zum Bewegen des Tetris-Blocks hier
-}
-
-// Animationsschleife
-function animate() {
-  // Code zur Animation des Tetris-Blocks hier
-}
-
-// Starte das Tetris-Spiel
-animate();
-</script>
-
+        updateGame();
+    </script>
 </body>
 </html>
