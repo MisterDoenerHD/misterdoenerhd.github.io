@@ -1,1 +1,54 @@
-<!DOCTYPE html> <html> <head> <title>Apple</title> <meta charset="UTF-8"> <meta name="description" content="Apple Website"> </head> <body> <div class="main-container"> <h1>Welcome to Apple</h1> <div class="sidebar"> <ul> <li><a href="index.html">Home</a></li> <li><a href="about.html">About</a></li> <li><a href="products.html">Products</a></li> <li><a href="contact.html">Contact</a></li> </ul> </div> <div class="main-content"> <h2>Apple Products</h2> <p>Apple makes some of the best products in the world.</p> <ul> <li>iPhone</li> <li>iPad</li> <li>MacBook</li> <li>iMac</li> </ul> </div> </div> </body> </html>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Tetris</title>
+</head>
+<body>
+
+<h1>Tetris</h1>
+
+<canvas id="canvas" width="200" height="400"></canvas>
+
+<script>
+// Erstelle das Canvas-Element
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+// Größe der einzelnen Tetris-Blöcke
+var blockSize = 20;
+
+// Liste der Tetris-Blöcke
+var blocks = [
+  [Z, "red"],
+  [S, "green"],
+  [T, "yellow"],
+  [O, "blue"],
+  [L, "purple"],
+  [I, "cyan"],
+  [J, "orange"]
+];
+
+// Zufälliges Tetris-Block auswählen
+var currentBlock = blocks[Math.floor(Math.random() * blocks.length)];
+
+// Tetris-Block zeichnen
+function draw() {
+  // Code zum Zeichnen des Tetris-Blocks hier
+}
+
+// Tetris-Block bewegen
+function move() {
+  // Code zum Bewegen des Tetris-Blocks hier
+}
+
+// Animationsschleife
+function animate() {
+  // Code zur Animation des Tetris-Blocks hier
+}
+
+// Starte das Tetris-Spiel
+animate();
+</script>
+
+</body>
+</html>
