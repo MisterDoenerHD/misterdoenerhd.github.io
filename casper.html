@@ -1,99 +1,96 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Tetris</title>
-    <style>
-        body {
-            background-color: #00bfff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: sans-serif;
-        }
+    <head>
+        <title> Snake </title>
+        <style>
+            html {
+                overflow: hidden;
+            }
+            canvas {
+                background-color: #333;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="snakeCanvas" width="400" height="400"></canvas>
+        <script>
+            const canvas = document.getElementById('snakeCanvas');
+            const ctx = canvas.getContext('2d');
+            const box = 32;
+            let score = 0;
+            let direction = "right";
+            let snake = [];
+            snake[0] = {
+                x: 8 * box,
+                y: 8 * box
+            }
 
-        #tetris_container {
-            width: 300px;
-            height: 600px;
-            position: relative;
-            border: 5px solid #b3b3b3;
-            background-color: #f2f2f2;
-            margin-bottom: 30px;
-        }
+            let food = {
+                x: Math.floor(Math.random()*15+1) * box,
+                y: Math.floor(Math.random()*15+1) * box
+            }
 
-        .block {
-            width: 30px;
-            height: 30px;
-            position: absolute;
-            background-color: #000000;
-            border: 1px solid #b3b3b3;
-            box-sizing: border-box;
-        }
-    </style>
-</head>
-<body>
-    <div id="tetris_container"></div>
-    <script>
-        // Variablen
-        const blockSize = 30;
-        const gameWidth = 10;
-        const gameHeight = 20;
-        const gameContainer = document.querySelector('#tetris_container');
+            document.addEventListener("keydown", directionChange);
 
-        // Erstelle ein Array, das die Position jedes Blocks angibt
-        let blockPositionArray = [
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-        ];
+            function directionChange(event){
+                if(event.keyCode == 37 && direction != "right") direction = "left";
+                if(event.keyCode == 38 && direction != "down") direction = "up";
+                if(event.keyCode == 39 && direction != "left") direction = "right";
+                if(event.keyCode == 40 && direction != "up") direction = "down";
+            }
 
-        // Erstelle die Tetris-Blöcke
-        function createBlock(x, y) {
-            let block = document.createElement('div');
-            block.classList.add('block');
-            block.style.top = (x * blockSize) + 'px';
-            block.style.left = (y * blockSize) + 'px';
-            gameContainer.appendChild(block);
-        }
-
-        // Entferne den Tetris-Block
-        function removeBlock(x, y) {
-            let block = document.querySelector(".block[style='top: " + (x * blockSize) + "px; left: " + (y * blockSize) + "px;']");
-            gameContainer.removeChild(block);
-        }
-
-        // Aktualisiere das Spielfeld
-        function updateGame() {
-            for (let i = 0; i < gameHeight; i++) {
-                for (let j = 0; j < gameWidth; j++) {
-                    let value = blockPositionArray[i][j];
-                    if (value === 0) {
-                        removeBlock(i, j);
-                    } else {
-                        createBlock(i, j);
+            function eatTail(){
+                for(let i = 1; i < snake.length; i++) {
+                    if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+                        clearInterval(game);
+                        alert('Du hast verloren! Dein Score: ' + score);
                     }
                 }
             }
-        }
 
-        updateGame();
-    </script>
-</body>
+            function draw(){
+                ctx.fillStyle = "#333";
+                ctx.fillRect(0, 0, 400, 400);
+
+                ctx.fillStyle = "green";
+
+                snake.forEach(drawSnake);
+
+                ctx.fillStyle = "red";
+                ctx.fillRect(food.x, food.y, box, box);
+
+                let snakeX = snake[0].x;
+                let snakeY = snake[0].y;
+
+                if(direction == "left") snakeX -= box;
+                if(direction == "up") snakeY -= box;
+                if(direction == "right") snakeX += box;
+                if(direction == "down") snakeY += box;
+
+                if(snakeX == food.x && snakeY == food.y){
+                    score++;
+                    food = {
+                        x: Math.floor(Math.random()*15+1) * box,
+                        y: Math.floor(Math.random()*15+1) * box
+                    }
+                } else {
+                    snake.pop();
+                }
+
+                let newHead = {
+                    x: snakeX,
+                    y: snakeY
+                }
+
+                snake.unshift(newHead);
+            }
+
+            function drawSnake(snakePart) {
+                ctx.fillStyle = "green";
+                ctx.fillRect(snakePart.x, snakePart.y, box, box);
+            }
+
+            let game = setInterval(draw, 100);
+        </script>
+    </body>
 </html>
