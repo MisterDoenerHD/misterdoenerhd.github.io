@@ -57,6 +57,9 @@ function buttonclick(seite){
         case "tetris":
             window.location.href = "tetris.html";
             break;
+        case "uno":
+            window.location.href = "uno.html";
+            break;
     }
     
 }
