@@ -55,7 +55,10 @@ function buttonclick(seite){
             window.location.href = "venge.html";
             break;
         case "tetris":
-            window.location.href = "https://tetris.com/play-tetris";
+            window.location.href = "tetris.html";
+            break;
+        case "uno":
+            window.location.href = "uno.html";
             break;
     }
     
